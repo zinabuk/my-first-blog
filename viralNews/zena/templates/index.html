@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <title>viralNews</title>
+  </head>
+  <body>
+    <header
+      class="w-full flex justify-center p-4 shadow-lg sticky top-0 bg-white/100"
+    >
+      <ul class="flex flex-col justify-center leading-tight">
+        <h2 class="text-2xl font-bold text-red-700"> <a href="/"> viralNews</a></h2>
+        <h6 class="self-end text-red-700">Stay patched!</h6>
+      </ul>
+    </header>
+    <main class="w-full text-black/70">
+      {% for  new in news %}
+      <ul class="w-full md:w-3/5 flex flex-col md:flex-row mx-auto my-3 border shadow-md">
+        <!-- <li class="w-2/5 p-2">
+          <img
+            src="{%  static 'IMG_20210303_172915_763' %}"
+            class="w-[300px] h-auto bg-cover mx-auto object-fit object-center rounded"
+            alt="Image of ..."
+          />
+        </li> -->
+        <li class="w-[90%] md:w-2/5 mx-auto p-2">
+          <img
+            src="{{new.image}}"
+            class="w-full md:w-[300px] h-auto bg-cover object-fit object-center rounded"
+            alt="Image of ..."
+          />
+        </li>
+        <li class="w-[90%] md:w-3/5 mx-auto flex flex-col justify-between p-2">
+          <div>
+            <a href="/{{ new.title }}" class="font-semibold">
+              <h1 class="text-2xl">
+                {{ new.title }}
+              </h1>
+            </a>
+            <p class="text-sm">
+              <span class="text-black font-bold">Viral New</span> by {{new.author_id}} /
+              <span class="">{{new.published_date}}</span>
+            </p>
+          </div>
+          <div class="leading-tight">
+           {{new.detail}}
+          </div>
+          <div>
+            <span>read more at</span>
+            <a
+              href="{{new.link}}"
+              class="font-semibold"
+              target="_blank"
+            >
+              {{new.publisher}}</a
+            >
+          </div>
+        </li>
+      </ul>
+      {% endfor %}
+    </main>
+    <footer class="w-full min-h-[200px] bg-black/80 flex flex-col text-white">
+      <section class="w-full flex justify-end">
+        <div class="w-full md:w-2/5 flex justify-between px-12 py-2">
+          <ul>
+            <li class="text-2xl">Quick Links</li>
+            <li>
+              <a href="mailto:kalayuzinabu@gmail.com" class="">
+                Contact Us <span class="fas fa-envelope px-2"></span
+              ></a>
+            </li>
+            <li>About Us</li>
+          </ul>
+          <ul class="">
+            <li class="md:text-2xl">Meet Developer</li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/zinabu-kalayu-8517b8287/"
+                target="_blank"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/zed_kale/" target="_blank">
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@melsify" target="_blank">
+                Youtube
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/profile.php?id=100080501914295"
+                target="_blank"
+              >
+                Facebook
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="flex justify-center">
+        <p>viralNews, &copy; All Rights Reserved!</p>
+        <p id="" class="date px-2"></p>
+        <div class="space-x-2 ml-4">
+          <span class="fab fa-twitter"></span
+          ><span class="fab fa-facebook"></span
+          ><span class="fab fa-youtube"></span>
+          <span class="fab fa-linkedin"></span>
+        </div>
+      </section>
+    </footer>
+
+    <script>
+      const d = new Date();
+      document.querySelector(".date").innerHTML = d.getFullYear();
+    </script>
+  </body>
+</html>
