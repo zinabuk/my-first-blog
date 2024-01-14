@@ -11,7 +11,7 @@ myEnvironment/
 venv/
 
 #static folder in project
-static/
+/static/
 
 #Windows
 Thumbs.db*
