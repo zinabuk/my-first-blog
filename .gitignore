@@ -11,8 +11,6 @@ myEnvironment/
 venv/
 
 #static folder in project
-
-
 static/
 
 #Windows
